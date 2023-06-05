@@ -1,0 +1,382 @@
+---
+title: "Programación en PHP y MySQL."
+subtitle: "Desarrollo Web para Integraciones"
+date: "today"
+author: "Lcdo. Diego Medardo Saavedra García. Mgtr."
+lang: "es"
+format:
+  revealjs:
+    #chalkboard: 
+      #buttons: false
+    toc: true
+    incremental: false
+    slide-number: true
+    preview-links: auto
+    logo: img/logo.png
+    footer: <https://espe.edu.ec>
+    theme: dark
+    makeindex: true
+    multiplex: true
+    transition: fade
+    chalkboard: true #Pizarra
+    auto-stretch: false
+    smaller: false
+    scrollable: true
+    #presentation-title-slide-text-alig: left
+    presentation-slide-text-align: center
+    menu: true
+    codeBlock: {data-trim: true}
+    execute: true
+    executeCode: true
+  #html: 
+    
+    #code-fold: true
+    #html-math-method: katex
+    #multiplex: true
+    #transition: fade
+    #auto-stretch: false
+bibliography: Bibliografia.bib
+csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+# Programación en PHP y MySQL.
+
+## Introducción a PHP y MySQL.
+
+PHP es un lenguaje de programación de código abierto diseñado específicamente para el desarrollo web. Con PHP, los desarrolladores pueden crear páginas web dinámicas que pueden interactuar con los usuarios y generar contenido personalizado. PHP se ejecuta en el lado del servidor y genera código HTML que se envía al navegador del usuario.
+
+## Conceptos básicos de programación.
+
+Es importante comprender los conceptos básicos de programación antes de comenzar a trabajar con PHP y MySQL. Esto incluye entender los tipos de datos, variables, estructuras de control (como condicionales y bucles), funciones y otros fundamentos de la programación.
+
+## MySQL.
+
+MySQL es un sistema de gestión de bases de datos relacional ampliamente utilizado y compatible con PHP. Proporciona un entorno para almacenar, organizar y recuperar datos de manera eficiente. MySQL es una opción popular para aplicaciones web debido a su rendimiento, escalabilidad y facilidad de uso.
+
+## Introducción a la programación orientada a objetos (POO).
+
+La programación orientada a objetos es un paradigma de programación que se centra en la creación de objetos que contienen datos y funciones relacionadas. En PHP, la programación orientada a objetos permite estructurar el código de manera más modular y reutilizable, lo que facilita el mantenimiento y la escalabilidad de las aplicaciones.
+
+## Relación entre PHP, MySQL y la POO.
+
+PHP y MySQL trabajan en conjunto para crear aplicaciones web dinámicas. PHP se encarga de la lógica del lado del servidor, como procesar formularios, realizar cálculos y acceder a bases de datos. MySQL proporciona la capacidad de almacenar y recuperar datos de manera eficiente. Al utilizar la programación orientada a objetos en PHP, es posible crear clases y objetos que interactúen con la base de datos MySQL, lo que mejora la estructura y el rendimiento del código.
+
+Estos conceptos son fundamentales para comprender cómo **PHP y MySQL se utilizan en el desarrollo web**. Al combinar PHP, MySQL y la programación orientada a objetos, los desarrolladores pueden crear aplicaciones web potentes y escalables.
+
+## Características principales de PHP.
+
+PHP es un lenguaje de programación de código abierto ampliamente utilizado en el desarrollo web. Algunas de las características principales de PHP son:
+
+Interacción con bases de datos: PHP tiene una amplia capacidad de interactuar con diferentes sistemas de gestión de bases de datos, como MySQL, PostgreSQL, Oracle, SQLite, entre otros. Esto permite a los desarrolladores almacenar y recuperar datos de manera eficiente en sus aplicaciones web.
+
+Ejemplo de código en PHP para interactuar con una base de datos MySQL:
+
+```{php}
+<?php
+// Establecer una conexión con la base de datos
+$conexion = mysqli_connect("localhost", "usuario", "contraseña", "basededatos");
+
+// Realizar una consulta
+$sql = "SELECT * FROM usuarios";
+$resultado = mysqli_query($conexion, $sql);
+
+// Recorrer los resultados
+while ($fila = mysqli_fetch_assoc($resultado)) {
+    echo "Nombre: " . $fila["nombre"] . "<br>";
+    echo "Email: " . $fila["email"] . "<br><br>";
+}
+
+// Cerrar la conexión
+mysqli_close($conexion);
+?>
+
+```
+
+Sitios web dinámicos: PHP es especialmente adecuado para la creación de sitios web dinámicos. Puede generar contenido personalizado en función de la interacción del usuario, como formularios de registro, carritos de compras, sistemas de comentarios, entre otros. Esto permite a los desarrolladores crear experiencias web interactivas y personalizadas.
+
+Ejemplo de código en PHP para mostrar un mensaje personalizado:
+
+```{php}
+<?php
+$nombre = "Juan";
+echo "Bienvenido, $nombre";
+?>
+```
+
+**Amplitud de uso:** PHP es utilizado por un gran número de desarrolladores y empresas en todo el mundo. Es compatible con una amplia gama de sistemas operativos y servidores web, lo que lo convierte en una opción flexible para el desarrollo web. Además, cuenta con una extensa comunidad de desarrolladores que proporciona recursos, bibliotecas y soporte.
+
+En resumen, PHP es un lenguaje de programación versátil que destaca por su capacidad de interactuar con bases de datos, su idoneidad para la creación de sitios web dinámicos y su amplio uso en el desarrollo web. Su combinación con MySQL y otras tecnologías permite construir aplicaciones web potentes y escalables.
+
+## MySQL como sistema de gestión de bases de datos.
+
+MySQL es un sistema de gestión de bases de datos relacional ampliamente utilizado en el desarrollo web. Algunas características principales de MySQL son:
+
+**Amplia compatibilidad con PHP:** MySQL es altamente compatible con PHP y se integra sin problemas con el lenguaje de programación. Esto permite a los desarrolladores utilizar PHP para conectarse, interactuar y administrar bases de datos MySQL de manera eficiente.
+
+**Eficiencia y rendimiento:** MySQL está diseñado para ofrecer un rendimiento óptimo y una alta velocidad de ejecución de consultas. Utiliza índices, optimización de consultas y técnicas de almacenamiento eficientes para garantizar que las operaciones de lectura y escritura sean rápidas y eficientes, lo que es esencial para aplicaciones web que manejan grandes volúmenes de datos.
+
+**Escalabilidad y capacidad de manejo de grandes conjuntos de datos:** MySQL es conocido por su capacidad para manejar grandes conjuntos de datos y escalar horizontalmente. Puede administrar eficientemente millones de registros y proporcionar un acceso rápido y confiable a la información almacenada.
+
+**Soporte para múltiples plataformas:** MySQL es compatible con una amplia gama de plataformas y sistemas operativos, lo que brinda flexibilidad a los desarrolladores para ejecutar y desplegar sus aplicaciones web en diferentes entornos. Se puede utilizar en sistemas operativos como Windows, Linux, macOS, entre otros.
+
+En resumen, MySQL es un sistema de gestión de bases de datos potente, eficiente y escalable que se integra de manera efectiva con PHP. Su amplia compatibilidad con diferentes plataformas y su capacidad para manejar grandes volúmenes de datos lo convierten en una opción popular para el desarrollo web.
+
+## Importancia de la conexión entre PHP y MySQL.
+
+La conexión entre PHP y MySQL es fundamental en el desarrollo web, ya que permite almacenar y recuperar datos de manera eficiente. Algunos aspectos importantes sobre la conexión entre PHP y MySQL son:
+
+**Almacenamiento de datos:** PHP proporciona funciones y métodos para conectarse a una base de datos MySQL y enviar consultas para almacenar datos. Esto permite a los desarrolladores guardar información de usuarios, registros, productos u otra información relevante en la base de datos.
+
+**Recuperación de datos:** PHP también ofrece herramientas para realizar consultas a la base de datos MySQL y obtener los datos almacenados. Esto permite mostrar información dinámica en las páginas web, como listas de productos, perfiles de usuarios, contenido generado por el usuario, entre otros.
+
+**Seguridad:** La conexión entre PHP y MySQL debe establecerse de manera segura para proteger los datos sensibles. Se deben implementar medidas de seguridad, como la validación y el escape de datos, para prevenir ataques de inyección de SQL y proteger la integridad de la base de datos.
+
+**Optimización del rendimiento:** Una conexión eficiente entre PHP y MySQL es crucial para garantizar un rendimiento óptimo de la aplicación web. Se pueden aplicar técnicas como el uso de consultas preparadas, el uso de índices en la base de datos y la gestión adecuada de las conexiones para mejorar la velocidad de ejecución de las consultas y minimizar el tiempo de respuesta.
+
+En general, la conexión entre PHP y MySQL es esencial en el desarrollo web, ya que permite interactuar con la base de datos para almacenar
+
+## Ejemplo de código en PHP para la conexión y consultas a MySQL.
+
+Aquí se presenta un ejemplo de código en PHP que muestra cómo establecer una conexión con MySQL y realizar consultas a la base de datos.
+
+```{php}
+<?php
+// Establecer una conexión con la base de datos MySQL
+$conexion = new mysqli("localhost", "usuario", "contraseña", "basededatos");
+
+// Verificar si la conexión fue exitosa
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
+
+// Realizar una consulta a la base de datos
+$sql = "SELECT * FROM usuarios";
+$resultado = $conexion->query($sql);
+
+// Verificar si se encontraron resultados
+if ($resultado->num_rows > 0) {
+    // Recorrer los resultados obtenidos
+    while ($fila = $resultado->fetch_assoc()) {
+        echo "Nombre: " . $fila["nombre"] . "<br>";
+        echo "Email: " . $fila["email"] . "<br><br>";
+    }
+} else {
+    echo "No se encontraron resultados.";
+}
+
+// Cerrar la conexión a la base de datos
+$conexion->close();
+?>
+```
+
+En este ejemplo, se utiliza la clase `mysqli` para establecer una conexión con MySQL. Luego, se ejecuta una consulta para obtener los registros de una tabla llamada "usuarios". Si se encuentran resultados, se recorren y se muestra la información correspondiente. Si no se encuentran resultados, se muestra un mensaje indicando la ausencia de datos.
+
+Este código ilustra cómo se puede interactuar con MySQL utilizando PHP y la clase `mysqli`. Es importante recordar que los valores para "usuario", "contraseña" y "basededatos" deben ser reemplazados con las credenciales correctas y el nombre de la base de datos correspondiente.
+
+## Actividad práctica propuesta 001.
+
+**Actividad:** Crear una aplicación de registro de usuarios.
+
+1.  Crear una base de datos en MySQL llamada "registro_usuarios".
+
+2.  Crear una tabla en la base de datos llamada "usuarios" con las columnas "id", "nombre" y "email".
+
+3.  Utilizando PHP y la programación orientada a objetos, desarrollar un formulario de registro que solicite el nombre y el email del usuario.
+
+4.  Validar los datos ingresados en el formulario para asegurar que cumplan con los requisitos establecidos (por ejemplo, campos no vacíos, formato de email válido).
+
+5.  Conectar PHP a la base de datos MySQL y almacenar los datos ingresados en la tabla "usuarios".
+
+6.  Mostrar un mensaje de éxito al usuario después de registrar los datos.
+
+7.  Agregar una funcionalidad adicional, como mostrar una lista de usuarios registrados o permitir al usuario actualizar su información.
+
+## Recursos adicionales y recomendaciones.
+
+-   Documentación oficial de PHP: [php.net](www.php.net)
+
+-   Documentación oficial de MySQL: [dev.mysql.com/doc/](dev.mysql.com/doc/)
+
+-   Utilización de herramientas como XAMPP o WAMP para configurar un entorno de desarrollo local con PHP y MySQL.
+
+-   Participar en comunidades en línea y foros de desarrollo web para obtener ayuda y compartir conocimientos con otros desarrolladores.
+
+-   Practicar la creación de aplicaciones web utilizando PHP y MySQL mediante la resolución de desafíos y el desarrollo de proyectos pequeños.
+
+Estos recursos y recomendaciones son útiles para ampliar tus conocimientos sobre PHP, MySQL y el desarrollo web en general. Explora la documentación oficial, aprovecha las herramientas.
+
+## Desarrollo de un CRUD con PHP y MySQL utilizando programación orientada a objetos.
+
+El desarrollo de un CRUD (Crear, Leer, Actualizar y Eliminar) es una tarea común en el desarrollo de aplicaciones web. Utilizando PHP y MySQL con programación orientada a objetos, puedes crear un sistema que permita realizar estas operaciones sobre una base de datos. Aquí se presenta un ejemplo básico de cómo desarrollar un CRUD:
+
+1.  Crear una clase "Usuario" que represente un usuario en la base de datos. La clase puede tener propiedades como "id", "nombre" y "email", y métodos para realizar las operaciones CRUD.
+
+2.  Implementar el método "create()" que permita crear un nuevo usuario en la base de datos. Este método tomará como parámetros los datos del usuario (nombre y email) y ejecutará una consulta INSERT para almacenarlos en la tabla correspondiente.
+
+3.  Implementar el método "read()" que permita recuperar los datos de un usuario específico. Este método tomará como parámetro el ID del usuario y ejecutará una consulta SELECT para obtener los datos correspondientes.
+
+4.  Implementar el método "update()" que permita actualizar los datos de un usuario existente. Este método tomará como parámetros el ID del usuario y los nuevos datos (nombre y email) y ejecutará una consulta UPDATE para modificar los valores en la tabla.
+
+5.  Implementar el método "delete()" que permita eliminar un usuario de la base de datos. Este método tomará como parámetro el ID del usuario y ejecutará una consulta DELETE para eliminar el registro correspondiente.
+
+6.  Utilizar instancias de la clase "Usuario" para interactuar con la base de datos y realizar las operaciones CRUD según sea necesario.
+
+Ejemplo de código para la clase "Usuario":
+
+```{php}
+class Usuario {
+    private $conexion;
+
+    public function __construct($conexion) {
+        $this->conexion = $conexion;
+    }
+
+    public function create($nombre, $email) {
+        $sql = "INSERT INTO usuarios (nombre, email) VALUES ('$nombre', '$email')";
+        $this->conexion->query($sql);
+    }
+
+    public function read($id) {
+        $sql = "SELECT * FROM usuarios WHERE id = $id";
+        $resultado = $this->conexion->query($sql);
+        return $resultado->fetch_assoc();
+    }
+
+    public function update($id, $nombre, $email) {
+        $sql = "UPDATE usuarios SET nombre = '$nombre', email = '$email' WHERE id = $id";
+        $this->conexion->query($sql);
+    }
+
+    public function delete($id) {
+        $sql = "DELETE FROM usuarios WHERE id = $id";
+        $this->conexion->query($sql);
+    }
+}
+
+// Uso de la clase Usuario
+$conexion = new mysqli("localhost", "usuario", "contraseña", "basededatos");
+$usuario = new Usuario($conexion);
+
+$usuario->create("John Doe", "john@example.com");
+$datosUsuario = $usuario->read(1);
+$usuario->update(1, "Jane Doe", "jane@example.com");
+$usuario->delete(1);
+
+```
+
+Este ejemplo muestra cómo se puede utilizar la programación orientada a
+objetos en PHP y MySQL para desarrollar un CRUD básico. Personaliza el
+código según tus necesidades y estructura de base de datos. Recuerda
+mantener buenas prácticas de seguridad, como la validación de datos y el
+uso de consultas preparadas, para proteger tus aplicaciones web contra
+ataques.
+
+## Actividad práctica propuesta 002.
+
+**Actividad:** Desarrollar un CRUD para una lista de tareas
+
+1.  Crea una base de datos en MySQL llamada "lista_tareas".
+
+2.  Crea una tabla en la base de datos llamada "tareas" con las columnas "id", "titulo", "descripcion" y "fecha".
+
+3.  Utilizando PHP y la programación orientada a objetos, desarrolla un formulario que permita agregar nuevas tareas a la lista. El formulario debe incluir campos para el título, descripción y fecha de la tarea.
+
+4.  Implementa la funcionalidad para almacenar las tareas ingresadas en la base de datos utilizando la clase CRUD. Utiliza el método "create()" para insertar los datos en la tabla "tareas".
+
+5.  Desarrolla una página que muestre todas las tareas existentes en la base de datos. Utiliza el método "read()" para obtener los datos de la tabla "tareas" y muestra la información en una tabla o lista.
+
+6.  Agrega la capacidad de actualizar y eliminar tareas. Implementa los métodos "update()" y "delete()" en la clase CRUD para modificar los registros correspondientes en la base de datos.
+
+7.  Mejora la interfaz de usuario agregando opciones como filtrado por fecha, búsqueda de tareas y paginación para manejar grandes conjuntos de datos.
+
+8.  Experimenta con otros conceptos de programación orientada a objetos, como la herencia y la encapsulación, para mejorar la estructura y organización del código.
+
+Ejemplo para desarrollar un CRUD para una lista de tareas utilizando PHP y MySQL con programación orientada a objetos:
+
+```{php}
+<?php
+class Tarea {
+    private $conexion;
+
+    public function __construct($conexion) {
+        $this->conexion = $conexion;
+    }
+
+    public function create($titulo, $descripcion, $fecha) {
+        $sql = "INSERT INTO tareas (titulo, descripcion, fecha) VALUES ('$titulo', '$descripcion', '$fecha')";
+        $this->conexion->query($sql);
+    }
+
+    public function readAll() {
+        $sql = "SELECT * FROM tareas";
+        $resultado = $this->conexion->query($sql);
+        $tareas = [];
+
+        if ($resultado->num_rows > 0) {
+            while ($fila = $resultado->fetch_assoc()) {
+                $tareas[] = $fila;
+            }
+        }
+
+        return $tareas;
+    }
+
+    public function update($id, $titulo, $descripcion, $fecha) {
+        $sql = "UPDATE tareas SET titulo = '$titulo', descripcion = '$descripcion', fecha = '$fecha' WHERE id = $id";
+        $this->conexion->query($sql);
+    }
+
+    public function delete($id) {
+        $sql = "DELETE FROM tareas WHERE id = $id";
+        $this->conexion->query($sql);
+    }
+}
+
+// Uso de la clase Tarea
+$conexion = new mysqli("localhost", "usuario", "contraseña", "lista_tareas");
+$tarea = new Tarea($conexion);
+
+// Ejemplo de creación de una tarea
+$tarea->create("Completar informe", "Completar el informe trimestral de ventas", "2023-06-10");
+
+// Ejemplo de obtención de todas las tareas
+$todasLasTareas = $tarea->readAll();
+
+foreach ($todasLasTareas as $tarea) {
+    echo "Título: " . $tarea['titulo'] . "<br>";
+    echo "Descripción: " . $tarea['descripcion'] . "<br>";
+    echo "Fecha: " . $tarea['fecha'] . "<br><br>";
+}
+
+// Ejemplo de actualización de una tarea
+$tarea->update(1, "Completar informe trimestral", "Completar el informe trimestral de ventas y marketing", "2023-06-15");
+
+// Ejemplo de eliminación de una tarea
+$tarea->delete(1);
+
+$conexion->close();
+?>
+
+```
+
+En este ejemplo, se utiliza la clase `Tarea` para realizar las operaciones CRUD en la tabla "tareas". La función `create()` se utiliza para insertar una nueva tarea en la base de datos. La función `readAll()` se utiliza para obtener todas las tareas existentes. La función `update()` se utiliza para actualizar los datos de una tarea específica. Y la función `delete()` se utiliza para eliminar una tarea de la base de datos.
+
+Recuerda reemplazar "usuario", "contraseña" y "lista_tareas" con tus propias credenciales y nombre de base de datos correspondiente. También asegúrate de haber creado previamente la tabla "tareas" con las columnas "id", "titulo", "descripción" y "fecha".
+
+Este código te servirá como punto de partida para desarrollar un CRUD completo para una lista de tareas. Personaliza y amplía el código según tus necesidades y requisitos específicos.
+
+## Recursos adicionales y recomendaciones.
+
+-   Explora frameworks PHP populares como Laravel, Symfony o CodeIgniter, que proporcionan funcionalidades adicionales para el desarrollo de aplicaciones web, incluyendo manejo de bases de datos y generación automática de código CRUD.
+
+-   Utiliza herramientas de control de versiones como Git para mantener un registro de los cambios en tu código y colaborar con otros desarrolladores de manera efectiva.
+
+-   Aprovecha recursos en línea, como tutoriales, documentación y blogs, para ampliar tus conocimientos sobre el desarrollo de CRUDs y la programación orientada a objetos en PHP.
+
+-   Prueba y depura tu aplicación regularmente para asegurarte de que funcione correctamente y maneje los errores de manera adecuada.
+
+-   ¡Diviértete y continúa aprendiendo! La programación es un campo en constante evolución, por lo que mantenerse actualizado y explorar nuevas tecnologías y enfoques es fundamental para mejorar tus habilidades como desarrollador web.
+
+Estos recursos y recomendaciones te ayudarán a avanzar en tu aprendizaje y desarrollo de aplicaciones web utilizando PHP, MySQL y la programación orientada a objetos. ¡Sigue practicando y construyendo proyectos para fortalecer tus habilidades y convertirte en un desarrollador web más competente y versátil!
