@@ -73,7 +73,7 @@ Interacción con bases de datos: PHP tiene una amplia capacidad de interactuar c
 
 Ejemplo de código en PHP para interactuar con una base de datos MySQL:
 
-```{php}
+``` php
 <?php
 // Establecer una conexión con la base de datos
 $conexion = mysqli_connect("localhost", "usuario", "contraseña", "basededatos");
@@ -91,14 +91,13 @@ while ($fila = mysqli_fetch_assoc($resultado)) {
 // Cerrar la conexión
 mysqli_close($conexion);
 ?>
-
 ```
 
 Sitios web dinámicos: PHP es especialmente adecuado para la creación de sitios web dinámicos. Puede generar contenido personalizado en función de la interacción del usuario, como formularios de registro, carritos de compras, sistemas de comentarios, entre otros. Esto permite a los desarrolladores crear experiencias web interactivas y personalizadas.
 
 Ejemplo de código en PHP para mostrar un mensaje personalizado:
 
-```{php}
+``` php
 <?php
 $nombre = "Juan";
 echo "Bienvenido, $nombre";
@@ -141,7 +140,7 @@ En general, la conexión entre PHP y MySQL es esencial en el desarrollo web, ya 
 
 Aquí se presenta un ejemplo de código en PHP que muestra cómo establecer una conexión con MySQL y realizar consultas a la base de datos.
 
-```{php}
+``` php
 <?php
 // Establecer una conexión con la base de datos MySQL
 $conexion = new mysqli("localhost", "usuario", "contraseña", "basededatos");
@@ -192,6 +191,146 @@ Este código ilustra cómo se puede interactuar con MySQL utilizando PHP y la cl
 6.  Mostrar un mensaje de éxito al usuario después de registrar los datos.
 
 7.  Agregar una funcionalidad adicional, como mostrar una lista de usuarios registrados o permitir al usuario actualizar su información.
+
+## Resolución de la Práctica 001.
+
+Paso 1: Creación de la tabla "contactos" en la base de datos.
+
+``` sql
+CREATE TABLE contactos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    direccion VARCHAR(100),
+    correo VARCHAR(50) NOT NULL,
+    telefono VARCHAR(15)
+);
+```
+
+Paso 2: Conexión a la base de datos.
+
+``` php
+<?php
+$host = "localhost";
+$usuario = "usuario";
+$contraseña = "contraseña";
+$baseDeDatos = "nombre_base_de_datos";
+
+$conexion = new mysqli($host, $usuario, $contraseña, $baseDeDatos);
+
+if ($conexion->connect_error) {
+    die("Error al conectar con la base de datos: " . $conexion->connect_error);
+}
+?>
+```
+
+Paso 3: Función para agregar un nuevo contacto.
+
+``` php
+<?php
+function agregarContacto($nombre, $apellido, $direccion, $correo, $telefono) {
+    global $conexion;
+
+    $sql = "INSERT INTO contactos (nombre, apellido, direccion, correo, telefono) VALUES ('$nombre', '$apellido', '$direccion', '$correo', '$telefono')";
+
+    if ($conexion->query($sql) === TRUE) {
+        echo "Contacto agregado exitosamente";
+    } else {
+        echo "Error al agregar el contacto: " . $conexion->error;
+    }
+}
+?>
+```
+
+Paso 4: Función para obtener la lista de contactos
+
+``` php
+<?php
+function obtenerContactos() {
+    global $conexion;
+
+    $sql = "SELECT * FROM contactos";
+    $resultado = $conexion->query($sql);
+
+    if ($resultado->num_rows > 0) {
+        while ($fila = $resultado->fetch_assoc()) {
+            echo "ID: " . $fila["id"] . "<br>";
+            echo "Nombre: " . $fila["nombre"] . "<br>";
+            echo "Apellido: " . $fila["apellido"] . "<br>";
+            echo "Dirección: " . $fila["direccion"] . "<br>";
+            echo "Correo: " . $fila["correo"] . "<br>";
+            echo "Teléfono: " . $fila["telefono"] . "<br><br>";
+        }
+    } else {
+        echo "No se encontraron contactos";
+    }
+}
+?>
+```
+
+Paso 5: Función para actualizar un contacto existente
+
+``` php
+<?php
+function actualizarContacto($id, $nombre, $apellido, $direccion, $correo, $telefono) {
+    global $conexion;
+
+    $sql = "UPDATE contactos SET nombre = '$nombre', apellido = '$apellido', direccion = '$direccion', correo = '$correo', telefono = '$telefono' WHERE id = $id";
+
+    if ($conexion->query($sql) === TRUE) {
+        echo "Contacto actualizado exitosamente";
+    } else {
+        echo "Error al actualizar el contacto: " . $conexion->error;
+    }
+}
+?>
+```
+
+Paso 6: Función para eliminar un contacto.
+
+``` php
+<?php
+function eliminarContacto($id) {
+    global $conexion;
+
+    $sql = "DELETE FROM contactos WHERE id = $id";
+
+    if ($conexion->query($sql) === TRUE) {
+        echo "Contacto eliminado exitosamente";
+    } else {
+        echo "Error al eliminar el contacto: " . $conexion->error;
+    }
+}
+?>
+```
+
+Paso 7: Uso de las funciones y explicación.
+
+``` php
+<?php
+// Agregar un nuevo contacto
+agregarContacto("Juan", "Perez", "Calle 123", "juan@example.com", "123456789");
+
+// Obtener la lista de contactos
+obtenerContactos();
+
+// Actualizar un contacto existente
+actualizarContacto(1, "Juan", "Perez", "Calle 456", "juan@example.com", "987654321");
+
+// Eliminar un contacto
+eliminarContacto(1);
+
+$conexion->close();
+?>
+```
+
+Este código te servirá como base para implementar el sistema CRUD para
+una lista de contactos utilizando PHP y MySQL. Asegúrate de reemplazar
+"usuario", "contraseña" y "nombre_base_de_datos" con tus propias
+credenciales y nombre de base de datos correspondiente. Además, puedes
+personalizar y ampliar el código según tus necesidades específicas, como
+agregar validaciones de datos, formularios de entrada de información,
+entre otros.
 
 ## Recursos adicionales y recomendaciones.
 
@@ -266,12 +405,7 @@ $usuario->delete(1);
 
 ```
 
-Este ejemplo muestra cómo se puede utilizar la programación orientada a
-objetos en PHP y MySQL para desarrollar un CRUD básico. Personaliza el
-código según tus necesidades y estructura de base de datos. Recuerda
-mantener buenas prácticas de seguridad, como la validación de datos y el
-uso de consultas preparadas, para proteger tus aplicaciones web contra
-ataques.
+Este ejemplo muestra cómo se puede utilizar la programación orientada a objetos en PHP y MySQL para desarrollar un CRUD básico. Personaliza el código según tus necesidades y estructura de base de datos. Recuerda mantener buenas prácticas de seguridad, como la validación de datos y el uso de consultas preparadas, para proteger tus aplicaciones web contra ataques.
 
 ## Actividad práctica propuesta 002.
 
